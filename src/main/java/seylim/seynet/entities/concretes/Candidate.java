@@ -12,10 +12,8 @@ import javax.persistence.*;
 @Table(name = "candidates")
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Candidate extends User{
 
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "candidateId")
     private int candidateId;
