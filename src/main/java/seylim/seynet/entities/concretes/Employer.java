@@ -9,13 +9,11 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@EqualsAndHashCode(callSuper = false)
 @Table(name = "employers")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Employer extends User{
 
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employerId")
     private int employerId;
