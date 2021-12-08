@@ -24,5 +24,4 @@ public class SeynetApplication {
                 .apis(RequestHandlerSelectors.basePackage("seylim.seynet"))
                 .build();
     }
-
 }
