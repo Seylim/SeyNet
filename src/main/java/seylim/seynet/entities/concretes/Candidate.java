@@ -3,20 +3,19 @@ package seylim.seynet.entities.concretes;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Table(name = "candidates")
 @AllArgsConstructor
 @NoArgsConstructor
+@PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "id")
 public class Candidate extends User{
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "candidateId")
-    private int candidateId;
 
     @Column(name = "first_name")
     private String firstName;
@@ -29,8 +28,4 @@ public class Candidate extends User{
 
     @Column(name = "year_of_birth")
     private int yearOfBirth;
-
-    //JsonIgnore
-    //@OneToMany(mappedBy="candidate")
-    //private List<Resume> resumes;
 }
