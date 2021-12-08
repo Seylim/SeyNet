@@ -9,14 +9,12 @@ import javax.persistence.*;
 
 @Entity
 @Data
+@EqualsAndHashCode(callSuper = true)
 @Table(name = "employers")
 @AllArgsConstructor
 @NoArgsConstructor
+@PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "id")
 public class Employer extends User{
-
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "employerId")
-    private int employerId;
 
     @Column(name = "company_name")
     private String companyName;
@@ -27,9 +25,12 @@ public class Employer extends User{
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "is_activited")
-    private boolean isActivited;
-
-    //@OneToMany(mappedBy = "employer")
-    //private List<JobAdvertisement> jobAdvertisements;
+    public Employer(int id, String email, String password, String companyName, String webAdrress, String phoneNumber) {
+        super.setId(id);
+        super.setEmail(email);
+        super.setPassword(password);
+        this.setCompanyName(companyName);
+        this.setWebAdrress(webAdrress);
+        this.setPhoneNumber(phoneNumber);
+    }
 }
