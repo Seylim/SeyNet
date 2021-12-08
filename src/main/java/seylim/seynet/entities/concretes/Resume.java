@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -29,6 +30,26 @@ public class Resume {
     @OneToOne
     @JoinColumn(name = "candidate_id")
     private Candidate candidate;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "resume")
+    private List<Education> educations;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "resume")
+    private List<Experience> experiences;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "resume")
+    private List<SocialMedia> socialMedias;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "resume")
+    private List<Technology> technologies;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "resume")
+    private List<Language> languages;
 
     public Resume(Candidate candidate){
         this.setCandidate(candidate);
