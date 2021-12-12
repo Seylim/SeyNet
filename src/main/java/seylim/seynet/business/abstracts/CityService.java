@@ -1,4 +1,6 @@
 package seylim.seynet.business.abstracts;
 
-public interface CityService {
+import seylim.seynet.entities.concretes.City;
+
+public interface CityService extends BaseEntityService<City>{
 }
