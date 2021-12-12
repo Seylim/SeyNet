@@ -1,4 +1,6 @@
 package seylim.seynet.business.abstracts;
 
-public interface LanguageService {
+import seylim.seynet.entities.concretes.Language;
+
+public interface LanguageService extends BaseEntityService<Language> {
 }

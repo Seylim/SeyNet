@@ -5,11 +5,7 @@ import seylim.seynet.entities.concretes.User;
 
 import java.util.List;
 
-public interface UserService {
-
-    DataResult<List<User>> getAll();
-
-    DataResult<User> getById(int id);
+public interface UserService extends BaseEntityService<User>{
 
     DataResult<User> getByEmail(String email);
 }

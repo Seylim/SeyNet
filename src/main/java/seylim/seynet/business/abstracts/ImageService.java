@@ -5,7 +5,7 @@ import seylim.seynet.entities.concretes.Image;
 
 import java.util.List;
 
-public interface ImageService {
+public interface ImageService extends BaseEntityService<Image>{
 
     DataResult<List<Image>> getByUser_Id(int userId);
 }

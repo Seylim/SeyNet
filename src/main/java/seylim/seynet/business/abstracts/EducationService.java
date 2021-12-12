@@ -6,7 +6,7 @@ import seylim.seynet.entities.concretes.Education;
 
 import java.util.List;
 
-public interface EducationService{
+public interface EducationService extends BaseEntityService<Education>{
 
     DataResult<List<Education>> getByResume_Id(int resumeId);
 

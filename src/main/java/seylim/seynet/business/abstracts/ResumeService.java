@@ -5,7 +5,7 @@ import seylim.seynet.entities.concretes.Resume;
 
 import java.util.List;
 
-public interface ResumeService {
+public interface ResumeService extends BaseEntityService<Resume>{
 
     DataResult<List<Resume>> getByCandidate_Id(int candidateId);
 }

@@ -1,4 +1,6 @@
 package seylim.seynet.business.abstracts;
 
-public interface TechnologyService {
+import seylim.seynet.entities.concretes.Technology;
+
+public interface TechnologyService extends BaseEntityService<Technology> {
 }

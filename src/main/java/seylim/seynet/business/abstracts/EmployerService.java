@@ -1,4 +1,6 @@
 package seylim.seynet.business.abstracts;
 
-public interface EmployerService {
+import seylim.seynet.entities.concretes.Employer;
+
+public interface EmployerService extends BaseEntityService<Employer> {
 }

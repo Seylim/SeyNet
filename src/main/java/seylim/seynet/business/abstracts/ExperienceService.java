@@ -6,7 +6,7 @@ import seylim.seynet.entities.concretes.Experience;
 
 import java.util.List;
 
-public interface ExperienceService {
+public interface ExperienceService extends BaseEntityService<Experience>{
 
     DataResult<List<Experience>> getByResume_Id(int resumeId);
 
