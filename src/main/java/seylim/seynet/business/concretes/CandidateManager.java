@@ -3,10 +3,7 @@ package seylim.seynet.business.concretes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import seylim.seynet.business.abstracts.CandidateService;
-import seylim.seynet.core.utilities.DataResult;
-import seylim.seynet.core.utilities.Messages;
-import seylim.seynet.core.utilities.Result;
-import seylim.seynet.core.utilities.SuccessResult;
+import seylim.seynet.core.utilities.*;
 import seylim.seynet.dataAccess.abstracts.CandidateDao;
 import seylim.seynet.entities.concretes.Candidate;
 
@@ -29,8 +26,10 @@ public class CandidateManager implements CandidateService {
     }
 
     @Override
-    public Result update(Candidate candidate) {
-        return null;
+    public Result update(Candidate candidate)
+    {
+        this.candidateDao.save(candidate);
+        return new SuccessResult(Messages.successUpdate);
     }
 
     @Override
@@ -41,16 +40,16 @@ public class CandidateManager implements CandidateService {
 
     @Override
     public DataResult<List<Candidate>> getAll() {
-        return null;
+        return new SuccessDataResult<List<Candidate>>(this.candidateDao.findAll(), Messages.dataListed);
     }
 
     @Override
     public DataResult<Candidate> getById(int id) {
-        return null;
+        return new SuccessDataResult<Candidate>(this.candidateDao.getById(id), Messages.dataListed);
     }
 
     @Override
     public DataResult<Candidate> getByNationalIdNumber(int nationalIdNumber) {
-        return null;
+        return new SuccessDataResult<Candidate>(this.candidateDao.getByNationalIdNumber(nationalIdNumber));
     }
 }
