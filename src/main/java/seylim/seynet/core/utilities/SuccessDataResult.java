@@ -1,5 +1,7 @@
 package seylim.seynet.core.utilities;
 
+import java.util.Optional;
+
 public class SuccessDataResult<T> extends DataResult{
 
     public SuccessDataResult(){
@@ -10,7 +12,11 @@ public class SuccessDataResult<T> extends DataResult{
         super(data, true);
     }
 
-    public SuccessDataResult(Object data, String message) {
+    public SuccessDataResult(T data, String message) {
         super(data, true, message);
+    }
+
+    public SuccessDataResult(String message){
+        super(null, true, message);
     }
 }
