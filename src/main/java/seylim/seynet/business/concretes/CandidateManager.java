@@ -49,7 +49,7 @@ public class CandidateManager implements CandidateService {
     }
 
     @Override
-    public DataResult<Candidate> getByNationalIdNumber(int nationalIdNumber) {
+    public DataResult<Candidate> getByNationalIdNumber(String nationalIdNumber) {
         return new SuccessDataResult<Candidate>(this.candidateDao.getByNationalIdNumber(nationalIdNumber));
     }
 }

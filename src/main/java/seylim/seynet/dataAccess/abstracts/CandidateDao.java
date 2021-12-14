@@ -5,5 +5,5 @@ import seylim.seynet.entities.concretes.Candidate;
 
 public interface CandidateDao extends JpaRepository<Candidate, Integer> {
 
-    Candidate getByNationalIdNumber(int nationalIdNumber);
+    Candidate getByNationalIdNumber(String nationalIdNumber);
 }

@@ -46,7 +46,7 @@ public class CandidateController {
     }
 
     @GetMapping("/getbynationalidnumber")
-    public DataResult<Candidate> getByNationalIdNumber(int nationalIdNumber){
+    public DataResult<Candidate> getByNationalIdNumber(String nationalIdNumber){
         return this.candidateService.getByNationalIdNumber(nationalIdNumber);
     }
 }

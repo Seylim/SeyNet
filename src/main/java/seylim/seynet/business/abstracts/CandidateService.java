@@ -5,5 +5,5 @@ import seylim.seynet.entities.concretes.Candidate;
 
 public interface CandidateService extends BaseEntityService<Candidate>{
 
-    DataResult<Candidate> getByNationalIdNumber(int nationalIdNumber);
+    DataResult<Candidate> getByNationalIdNumber(String nationalIdNumber);
 }
