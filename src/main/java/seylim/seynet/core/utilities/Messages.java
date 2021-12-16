@@ -23,4 +23,6 @@ public class Messages {
     public static String registeredID = "This ID Number is Registered to The System";
     public static String registrationIsSuccessful = "Registration is Successful";
     public static String informationIsIncorrect = "Your Information is Incorrect";
+
+    public static String loginIsSuccessful = "Login is Successful";
 }
