@@ -23,7 +23,7 @@ public class Image {
     @Column(name = "url")
     private String url;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 }

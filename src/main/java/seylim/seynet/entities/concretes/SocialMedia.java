@@ -26,7 +26,7 @@ public class SocialMedia {
     @Column(name = "linkedin")
     private String linkedIn;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "resume_id")
     private Resume resume;
 }

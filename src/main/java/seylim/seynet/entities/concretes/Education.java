@@ -35,7 +35,7 @@ public class Education {
     @Column(name = "graduation_date")
     private LocalDate graduationDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "resume_id")
     private Resume resume;
 

@@ -23,7 +23,7 @@ public class LanguageLevel {
     @Column(name = "level")
     private String level;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "language_id")
     private Language language;
 }

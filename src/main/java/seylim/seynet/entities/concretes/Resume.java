@@ -27,7 +27,7 @@ public class Resume {
     @Column(name = "creation_date")
     private LocalDateTime creationDate;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "candidate_id")
     private Candidate candidate;
 
