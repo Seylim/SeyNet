@@ -10,6 +10,6 @@ public class MernisAdaptor implements MernisService {
     @Override
     public boolean ifRealPerson(Candidate candidate) throws Exception {
         LGFKPSPublicSoap soap = new LGFKPSPublicSoap();
-        return soap.TCKimlikNoDogrula(Long.parseLong(candidate.getNationalIdNumber().toString()),candidate.getFirstName(), candidate.getLastName(), candidate.getYearOfBirth());
+        return soap.TCKimlikNoDogrula(Long.parseLong(candidate.getNationalIdNumber()),candidate.getFirstName(), candidate.getLastName(), candidate.getYearOfBirth());
     }
 }
