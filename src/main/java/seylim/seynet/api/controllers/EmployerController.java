@@ -20,6 +20,16 @@ public class EmployerController {
         this.employerService = employerService;
     }
 
+    @PostMapping("/register")
+    public Result register(@RequestBody Employer employer) throws Exception{
+        return this.employerService.register(employer);
+    }
+
+    @GetMapping("/login")
+    public Result login(@RequestParam String eMail, @RequestParam String passwordAgain) throws Exception{
+        return this.employerService.login(eMail, passwordAgain);
+    }
+
     @PostMapping("/add")
     public Result add(@RequestBody Employer employer){
         return this.employerService.add(employer);
