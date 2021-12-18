@@ -38,16 +38,17 @@ public class CandidateManager implements CandidateService {
                 }
                 return this.candidateValidService.validate(candidate);
             }
+            return checkIfUserExist(candidates, candidate);
         }
         return new ErrorResult(Messages.informationIsIncorrect);
     }
 
     @Override
-    public Result login(Candidate candidate, String passwordAgain) throws Exception {
+    public Result login(String eMail, String passwordAgain) throws Exception {
         List<Candidate> candidates = this.candidateDao.findAll();
         for (Candidate dbCandidate: candidates){
-            if (dbCandidate.getEmail().equals(candidate.getEmail())){
-                if (dbCandidate.getPassword().equals(candidate.getPassword())){
+            if (dbCandidate.getEmail().equals(eMail)){
+                if (dbCandidate.getPassword().equals(passwordAgain)){
                     return new SuccessResult(Messages.loginIsSuccessful);
                 }
             }
