@@ -2,11 +2,13 @@ package seylim.seynet.api.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import seylim.seynet.business.abstracts.ImageService;
 import seylim.seynet.core.utilities.DataResult;
 import seylim.seynet.core.utilities.Result;
 import seylim.seynet.entities.concretes.Image;
 
+import java.io.File;
 import java.util.List;
 
 @RestController
@@ -33,6 +35,11 @@ public class ImageController {
     @DeleteMapping("/delete")
     public Result delete(int id){
         return this.imageService.delete(id);
+    }
+
+    @PostMapping("/upload")
+    public Result upload(int userId, @RequestBody File file){
+        return this.imageService.upload(userId, file);
     }
 
     @GetMapping("/getall")
