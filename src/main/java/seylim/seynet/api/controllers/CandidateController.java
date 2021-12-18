@@ -20,6 +20,16 @@ public class CandidateController {
         this.candidateService = candidateService;
     }
 
+    @PostMapping("/register")
+    public Result register(@RequestBody Candidate candidate) throws Exception{
+        return this.candidateService.register(candidate);
+    }
+
+    @GetMapping("/login")
+    public Result login(@RequestParam String eMail, @RequestParam String passwordAgain) throws Exception{
+        return this.candidateService.login(eMail, passwordAgain);
+    }
+
     @PostMapping("/add")
     public Result add(@RequestBody Candidate candidate) {
         return this.candidateService.add(candidate);
