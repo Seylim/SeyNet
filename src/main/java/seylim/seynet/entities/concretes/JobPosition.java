@@ -53,7 +53,7 @@ public class JobPosition {
     @JoinColumn(name = "city_id")
     private City city;
 
-    /*@ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "job_title_id")
-    private JobTitle jobTitle;*/
+    private JobTitle jobTitle;
 }
