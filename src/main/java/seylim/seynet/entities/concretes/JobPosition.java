@@ -45,15 +45,15 @@ public class JobPosition {
     @Column(name = "is_active")
     private boolean isActive;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "employer_id")
     private Employer employer;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "job_title_id")
     private JobTitle jobTitle;
 }

@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ResumeDao extends JpaRepository<Resume, Integer> {
 
-    List<Resume> getByCandidate_Id(int candidateId);
+    Resume getByCandidate_Id(int candidateId);
 }

@@ -31,8 +31,12 @@ public class Experience {
     @Column(name = "termination_date")
     private LocalDate terminationDate;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "resume_id")
     private Resume resume;
+
+    @ManyToOne
+    @JoinColumn(name = "job_title_id")
+    private JobTitle jobTitle;
 
 }

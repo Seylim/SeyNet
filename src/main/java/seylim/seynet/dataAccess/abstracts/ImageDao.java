@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ImageDao extends JpaRepository<Image, Integer> {
 
-    List<Image> getByUser_Id(int userId);
+    Image getByUser_Id(int userId);
 }

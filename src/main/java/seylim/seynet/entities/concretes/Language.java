@@ -23,7 +23,7 @@ public class Language {
     @Column(name = "lenguage")
     private String language;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "resume_id")
     private Resume resume;
 }

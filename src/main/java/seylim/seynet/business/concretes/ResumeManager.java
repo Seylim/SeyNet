@@ -2,21 +2,33 @@ package seylim.seynet.business.concretes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import seylim.seynet.business.abstracts.EducationService;
+import seylim.seynet.business.abstracts.ExperienceService;
+import seylim.seynet.business.abstracts.ImageService;
 import seylim.seynet.business.abstracts.ResumeService;
 import seylim.seynet.core.utilities.*;
 import seylim.seynet.dataAccess.abstracts.ResumeDao;
 import seylim.seynet.entities.concretes.Resume;
+import seylim.seynet.entities.dtos.ResumeWithAllRelatedEntitiesDto;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ResumeManager implements ResumeService {
 
     private ResumeDao resumeDao;
+    private ImageService imageService;
+    private EducationService educationService;
+    private ExperienceService experienceService;
 
     @Autowired
-    public ResumeManager(ResumeDao resumeDao){
+    public ResumeManager(ResumeDao resumeDao, ImageService imageService, EducationService educationService, ExperienceService experienceService){
         this.resumeDao = resumeDao;
+        this.imageService = imageService;
+        this.educationService = educationService;
+        this.experienceService = experienceService;
     }
 
     @Override
@@ -27,7 +39,10 @@ public class ResumeManager implements ResumeService {
 
     @Override
     public Result update(Resume resume) {
-        this.resumeDao.save(resume);
+        resume = getById(resume.getId()).getData();
+        resume.setCreationDate(LocalDateTime.now());
+
+        resumeDao.save(resume);
         return new SuccessResult(Messages.successUpdate);
     }
 
@@ -48,7 +63,39 @@ public class ResumeManager implements ResumeService {
     }
 
     @Override
-    public DataResult<List<Resume>> getByCandidate_Id(int candidateId) {
-        return new SuccessDataResult<List<Resume>>(this.resumeDao.getByCandidate_Id(candidateId));
+    public DataResult<Resume> getByCandidate_Id(int candidateId) {
+        return new SuccessDataResult<Resume>(this.resumeDao.getByCandidate_Id(candidateId));
+    }
+
+    @Override
+    public DataResult<List<ResumeWithAllRelatedEntitiesDto>> getAllResumesDetailsByCandidate() {
+        List<ResumeWithAllRelatedEntitiesDto> resumes = new ArrayList<ResumeWithAllRelatedEntitiesDto>();
+
+        for (Resume resume : getAll().getData()) {
+            if (resume.getCandidate() != null ) {
+                resumes.add(getResumeDetailsByCandidateId(resume.getCandidate().getId()).getData());
+            }
+        };
+
+        return new SuccessDataResult<List<ResumeWithAllRelatedEntitiesDto>>(resumes);
+    }
+
+    @Override
+    public DataResult<ResumeWithAllRelatedEntitiesDto> getResumeDetailsByCandidateId(int candidateId) {
+        Resume resume = getByCandidate_Id(candidateId).getData();
+
+        ResumeWithAllRelatedEntitiesDto resumeWithAllRelatedEntitiesDto = new ResumeWithAllRelatedEntitiesDto(
+                resume.getId(),
+                resume.getCreationDate(),
+                resume.getCandidate(),
+                imageService.getByUser_Id(candidateId).getData(),
+                educationService.getAllByResumeIdSortedByGraduationDate(resume.getId()).getData(),
+                experienceService.getAllByResumeIdSortedByTerminationDate(resume.getId()).getData(),
+                resume.getLanguages(),
+                resume.getSocialMedias(),
+                resume.getTechnologies()
+        );
+
+        return new SuccessDataResult<ResumeWithAllRelatedEntitiesDto>(resumeWithAllRelatedEntitiesDto);
     }
 }

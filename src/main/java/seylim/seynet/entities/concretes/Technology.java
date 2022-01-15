@@ -23,7 +23,7 @@ public class Technology {
     @Column(name = "technology")
     private String technology;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "resume_id")
     private Resume resume;
 }

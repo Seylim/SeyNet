@@ -20,13 +20,14 @@ public class SocialMedia {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "github")
-    private String github;
+    @Column(name = "url")
+    private String url;
 
-    @Column(name = "linkedin")
-    private String linkedIn;
-
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "resume_id")
     private Resume resume;
+
+    @ManyToOne
+    @JoinColumn(name = "social_media_name_id")
+    private SocialMediaName socialMediaName;
 }
