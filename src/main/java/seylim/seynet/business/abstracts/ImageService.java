@@ -11,5 +11,5 @@ import java.util.List;
 public interface ImageService extends BaseEntityService<Image>{
     Result upload(int userId, File file);
 
-    DataResult<List<Image>> getByUser_Id(int userId);
+    DataResult<Image> getByUser_Id(int userId);
 }
