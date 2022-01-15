@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/jobposition")
+@CrossOrigin
 public class JobPositionController {
 
     private JobPositionService jobPositionService;
@@ -44,4 +45,45 @@ public class JobPositionController {
     public DataResult<JobPosition> getById(int id){
         return this.jobPositionService.getById(id);
     }
+
+    @GetMapping("/getAllByIsActive")
+    public DataResult<List<JobPosition>> getAllByIsActive(boolean isActive){
+        return this.jobPositionService.getAllByIsActive(isActive);
+    }
+
+    @GetMapping("/getAllActiveOnesByPage")
+    public DataResult<List<JobPosition>> getAllActiveOnesByPage(int pageNo, int pageSize){
+        return this.jobPositionService.getAllActiveOnesByPage(pageNo, pageSize);
+    }
+
+    @GetMapping("/getAllActiveOnesSortedByPostingDate")
+    public DataResult<List<JobPosition>> getAllActiveOnesSortedByPostingDate(){
+        return this.jobPositionService.getAllActiveOnesSortedByPostingDate();
+    }
+
+    @GetMapping("/getAllActiveOnesByPageSortedByPostingDate")
+    public DataResult<List<JobPosition>> getAllActiveOnesByPageSortedByPostingDate(int pageNo, int pageSize){
+        return this.jobPositionService.getAllActiveOnesByPage(pageNo, pageSize);
+    }
+
+    @GetMapping("/getAllActiveOnesSortedByPostingDateTop6")
+    public DataResult<List<JobPosition>> getAllActiveOnesSortedByPostingDateTop6(){
+        return this.jobPositionService.getAllActiveOnesSortedByPostingDateTop6();
+    }
+
+    @GetMapping("/getAllActiveOnesByEmployerIdSortedByPostingDate")
+    public DataResult<List<JobPosition>> getAllActiveOnesByEmployerIdSortedByPostingDate(int employerId){
+        return this.jobPositionService.getAllActiveOnesByEmployerIdSortedByPostingDate(employerId);
+    }
+
+    @GetMapping("/getAllActiveOnesFilteredByCityAndJobTitle")
+    public DataResult<List<JobPosition>> getAllActiveOnesFilteredByCityAndJobTitle(int cityId, int jobTitleId) {
+        return this.jobPositionService.getAllActiveOnesFilteredByCityAndJobTitle(cityId, jobTitleId);
+    }
+
+    @GetMapping("/getAllActiveOnesByPageFilteredByCityAndJobTitle")
+    public DataResult<List<JobPosition>> getAllActiveOnesByPageFilteredByCityAndJobTitle(int cityId, int jobTitleId, int pageNo, int pageSize){
+        return this.jobPositionService.getAllActiveOnesByPageFilteredByCityAndJobTitle(cityId, jobTitleId, pageNo, pageSize);
+    }
 }
+

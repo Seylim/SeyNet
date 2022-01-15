@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/socialmedia")
+@CrossOrigin
 public class SocialMediaController {
 
     private SocialMediaService socialMediaService;

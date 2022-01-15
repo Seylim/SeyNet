@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/image")
+@CrossOrigin
 public class ImageController {
 
     private ImageService imageService;
@@ -53,7 +54,7 @@ public class ImageController {
     }
 
     @GetMapping("/getbyuserid")
-    public DataResult<List<Image>> getByUser_Id(int userId){
+    public DataResult<Image> getByUser_Id(int userId){
         return this.imageService.getByUser_Id(userId);
     }
 }

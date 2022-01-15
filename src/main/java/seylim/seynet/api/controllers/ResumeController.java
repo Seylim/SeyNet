@@ -6,11 +6,13 @@ import seylim.seynet.business.abstracts.ResumeService;
 import seylim.seynet.core.utilities.DataResult;
 import seylim.seynet.core.utilities.Result;
 import seylim.seynet.entities.concretes.Resume;
+import seylim.seynet.entities.dtos.ResumeWithAllRelatedEntitiesDto;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/resume")
+@CrossOrigin
 public class ResumeController {
 
     private ResumeService resumeService;
@@ -46,7 +48,18 @@ public class ResumeController {
     }
 
     @GetMapping("/getbycandidateid")
-    public DataResult<List<Resume>> getByCandidate_Id(int candidateId){
+    public DataResult<Resume> getByCandidate_Id(int candidateId){
         return this.resumeService.getByCandidate_Id(candidateId);
     }
+
+    @GetMapping("/getallresumesdetailsbycandidate")
+    public DataResult<List<ResumeWithAllRelatedEntitiesDto>> getAllResumesDetailsByCandidate(){
+        return this.resumeService.getAllResumesDetailsByCandidate();
+    }
+
+    @GetMapping("/getResumeDetailsByCandidateId")
+    public DataResult<ResumeWithAllRelatedEntitiesDto> getResumeDetailsByCandidateId(@RequestParam int candidateId) {
+        return this.resumeService.getResumeDetailsByCandidateId(candidateId);
+    }
+
 }
